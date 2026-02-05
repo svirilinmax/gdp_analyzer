@@ -1,5 +1,12 @@
 # GDP Analyzer
 
+[![Python](https://img.shields.io/badge/Python-3.8+-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![Tabulate](https://img.shields.io/badge/Tabulate-0.9.0+-blue)](https://pypi.org/project/tabulate/)
+[![Pytest](https://img.shields.io/badge/Pytest-7.0.0+-0A9EDC?logo=pytest&logoColor=white)](https://docs.pytest.org/)
+[![Coverage](https://img.shields.io/badge/coverage-93%25-brightgreen)](./docs/test.png)
+[![Code Style](https://img.shields.io/badge/code%20style-black-000000?logo=black)](https://github.com/psf/black)
+[![License](https://img.shields.io/badge/license-MIT-yellow)](LICENSE)
+
 Инструмент для анализа макроэкономических данных по странам.
 Читает CSV-файлы с экономическими показателями и формирует отчеты.
 
@@ -10,8 +17,9 @@
 ```bash
   python main.py --files examples/economic1.csv examples/economic2.csv --report average-gdp
 ```
+### Альтернативная команда:
 ```bash
-  -  альтернативный запуск:
+
   python -m gdp_analyzer.cli --files examples/economic1.csv examples/economic2.csv --report average-gdp
 ```
 
@@ -32,6 +40,17 @@
 - `--files` - один или несколько путей к CSV файлам с данными (обязательный, если не используется `--list-reports`)
 - `--report` - название отчета для генерации (обязательный, если не используется `--list-reports`)
 - `--list-reports` - показать список доступных отчетов и выйти
+
+## Визуальные примеры
+
+### Тестирование и покрытие кода
+![Тестирование](docs/test.png)
+
+### Справка по использованию
+![Справка](docs/help.png)
+
+### Пример отчета average-gdp
+![Отчет average-gdp](docs/average-gdp.png)
 
 ## Формат данных
 
@@ -110,10 +129,10 @@ United States,2021,22994,5.9,4.7,5.3,337,North America
    - `generate(data)` - логика формирования отчета
    - `display(report_data)` - вывод отчета в консоль
 3. Зарегистрируйте отчет в `registry.py`:
-   ```python
-   from .your_report import YourReport
-   ReportRegistry.register_report(YourReport())
-   ```
+```python
+from .your_report import YourReport
+ReportRegistry.register_report(YourReport())
+```
 
 ## Установка для разработки
 
@@ -144,6 +163,10 @@ gdp_analyzer/
 │   │   ├── base.py              # Базовый класс отчета
 │   │   ├── registry.py          # Реестр отчетов
 │   │   └── __init__.py
+├── docs/                        # Визуальные примеры работы
+│ ├── average-gdp.png            # Пример отчета
+│ ├── help.png                   # Справка по использованию
+│ └── test.png                   # Результаты тестирования
 ├── examples/                    # Примеры данных
 ├── tests/                       # Тесты
 └── requirements*.txt            # Зависимости
@@ -189,3 +212,15 @@ gdp_analyzer/
    16 passed in 0.74s
    ===============================================================================
 ```
+## Контакты
+
+Проект разработан в рамках тестового задания на позицию Junior Backend Developer.
+
+По вопросам и предложениям:
+
+- **Telegram**: [@maxsvirilin](https://t.me/svirilinmax)
+- **Email**:    [mak.svirilin@gmail.com](mailto:mak.svirilin@gmail.com)
+
+## Лицензия
+
+Этот проект лицензирован под лицензией MIT - см. файл [LICENSE](LICENSE).
