@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gdp-analyzer"
+version = "1.0.0"
+description = "Анализатор макроэкономических данных"
+authors = [
+    {name = "Python Developer", email = "dev@example.com"}
+]
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "tabulate>=0.9.0",
+]
+
+[project.scripts]
+gdp-analyzer = "gdp_analyzer.cli:main"
+
+[tool.black]
+line-length = 88
+target-version = ['py38']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+[tool.pytest.ini_options]
+addopts = "--cov=gdp_analyzer --cov-report=term-missing --cov-report=html"
+# Указываем, где искать исходный код
+pythonpath = ["."]
+# Где лежат тесты
+testpaths = ["tests"]
+# Шаблоны имен файлов тестов
+python_files = ["test_*.py", "*_test.py"]
