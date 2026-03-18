@@ -1,4 +1,4 @@
-# GDP Analyzer
+# Data Analyzer
 
 [![Python](https://img.shields.io/badge/Python-3.8+-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![Tabulate](https://img.shields.io/badge/Tabulate-0.9.0+-blue)](https://pypi.org/project/tabulate/)
