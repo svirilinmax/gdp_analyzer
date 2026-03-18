@@ -174,7 +174,7 @@ ReportRegistry.register_report(YourReport())
 
 ```bash
 # Клонирование репозитория
-git clone https://github.com/svirilinmax/gdp_analyzer.git
+git clone https://github.com/svirilinmax/data_analyzer.git
 cd gdp-analyzer
 
 # Создание виртуального окружения
@@ -285,7 +285,7 @@ gdp_analyzer/
 
 - **Лицензия**: MIT
 - **Разработчик**: Максим Свирилин
-- **Репозиторий**: [github.com/svirilinmax/gdp-analyzer](https://github.com/svirilinmax/gdp-analyzer)
+- **Репозиторий**: [github.com/svirilinmax/data_analyzer](https://github.com/svirilinmax/data_analyzer)
 - **Вопросы**: [svirilin.work@mail.ru](mailto:svirilin.work@mail.ru)
 - **Telegram**: [@svirilinmax](https://t.me/svirilinmax)
 
