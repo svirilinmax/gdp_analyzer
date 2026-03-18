@@ -73,3 +73,16 @@ def test_average_gdp_report_display_empty():
         report.display([])
     output = f.getvalue()
     assert "Нет данных" in output
+
+
+def test_average_gdp_inherits_from_base():
+    """Проверяет, что AverageGdpReport наследуется от BaseReport."""
+    from gdp_analyzer.reports.average_gdp import AverageGdpReport
+    from gdp_analyzer.reports.base import BaseReport
+
+    assert issubclass(AverageGdpReport, BaseReport)
+
+    report = AverageGdpReport()
+    assert hasattr(report, "name")
+    assert hasattr(report, "generate")
+    assert hasattr(report, "display")
