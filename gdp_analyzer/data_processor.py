@@ -13,7 +13,8 @@ class DataProcessor:
         if not os.path.exists(file_path):
             raise FileNotFoundError(f"Файл не найден: {file_path}")
 
-        encodings = ["utf-8", "utf-8-sig", "latin-1", "cp1251", "cp1252"]
+        # Оставляем только самые вероятные кодировки
+        encodings = ["utf-8", "utf-8-sig", "cp1251", "cp866"]
 
         for encoding in encodings:
             try:
@@ -21,18 +22,18 @@ class DataProcessor:
                     reader = csv.DictReader(file)
                     rows = list(reader)
 
-                    if rows and any("country" in row for row in rows):
-                        self._data.extend(rows)
-                        return
-            except UnicodeDecodeError:
+                    if not reader.fieldnames or len(rows) == 0:
+                        continue
+
+                    self._data.extend(rows)
+                    return
+
+            except (UnicodeDecodeError, UnicodeError):
                 continue
             except Exception as e:
-                if encoding == encodings[-1]:
-                    raise ValueError(f"Ошибка чтения файла {file_path}: {e}")
+                raise ValueError(f"Критическая ошибка при чтении {file_path}: {e}")
 
-        raise ValueError(
-            f"Не удалось прочитать файл {file_path} с поддерживаемыми кодировками"
-        )
+        raise ValueError(f"Не удалось подобрать кодировку для файла {file_path}")
 
     def get_data(self) -> List[Dict[str, Any]]:
         """Получение всех загруженных данных."""

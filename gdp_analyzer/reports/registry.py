@@ -2,6 +2,7 @@ from typing import Dict, Optional
 
 from .average_gdp import AverageGdpReport
 from .base import BaseReport
+from .median_coffee import MedianCoffeeReport
 
 
 class ReportRegistry:
@@ -27,3 +28,4 @@ class ReportRegistry:
 
 # Регистрация стандартных отчетов
 ReportRegistry.register_report(AverageGdpReport())
+ReportRegistry.register_report(MedianCoffeeReport())

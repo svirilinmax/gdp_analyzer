@@ -49,14 +49,11 @@ def test_load_csv_file_not_found():
 
 def test_load_csv_invalid_encoding(tmp_path):
     """Тест загрузки файла с неподдерживаемой кодировкой."""
-
     processor = DataProcessor()
     temp_file = tmp_path / "wrong_encoding.csv"
+    temp_file.write_bytes(b"\xff\xfe\xfd\x12\x34")
 
-    content = "country,year,gdp\nChina,2023,18000"
-    temp_file.write_text(content, encoding="utf-16")
-
-    with pytest.raises(ValueError, match="Не удалось прочитать файл"):
+    with pytest.raises(ValueError, match="Не удалось подобрать кодировку для файла"):
         processor.load_csv(str(temp_file))
 
 
